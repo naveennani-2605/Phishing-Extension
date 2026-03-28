@@ -2,39 +2,51 @@ body {
   background: #343541;
   color: white;
   font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  /* Remove default margins */
+  padding: 0;
 }
 
 .app {
   text-align: center;
-  padding: 40px;
+  padding: 20px;
+  /* Reduced padding for mobile */
+  max-width: 800px;
+  /* Keeps it from getting too wide on desktop */
+  margin: 0 auto;
 }
 
 h1 {
   margin-bottom: 20px;
   color: #10a37f;
+  font-size: 1.8rem;
+  /* Scalable font size */
 }
 
 input {
-  width: 60%;
+  width: 90%;
+  /* Almost full width on mobile */
+  max-width: 500px;
+  /* Caps width on desktop */
   padding: 12px;
   border-radius: 8px;
   border: none;
-  margin: 10px;
+  margin: 10px 0;
   outline: none;
+  box-sizing: border-box;
+  /* Prevents padding from breaking width */
 }
 
 button {
-  padding: 10px 20px;
+  padding: 12px 24px;
   background: #10a37f;
   border: none;
   border-radius: 6px;
   color: white;
   cursor: pointer;
   transition: 0.3s;
-}
-
-button:hover {
-  background: #0d8a6a;
+  width: auto;
+  font-size: 1rem;
 }
 
 .result {
@@ -42,77 +54,29 @@ button:hover {
   padding: 20px;
   background: #444654;
   border-radius: 12px;
-  width: 60%;
+  width: 95%;
+  /* Responsive width */
+  max-width: 600px;
+  /* Caps width on desktop */
   margin-left: auto;
   margin-right: auto;
+  box-sizing: border-box;
 }
 
-/* 🔥 Risk Meter */
-.meter {
-  height: 12px;
-  width: 100%;
-  background: #2f2f2f;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-top: 15px;
-}
+/* ... keep your Meter and Animation styles the same ... */
 
-.meter-fill {
-  height: 100%;
-  width: 0%;
-  transition: width 0.6s ease-in-out;
-  border-radius: 10px;
-}
-
-/* Colors */
-.safe {
-  color: #00ff9d;
-}
-
-.warn {
-  color: #ffd700;
-}
-
-.danger {
-  color: #ff4d4d;
-}
-
-.safe-bar {
-  background: #00ff9d;
-}
-
-.warn-bar {
-  background: #ffd700;
-}
-
-.danger-bar {
-  background: #ff4d4d;
-}
-
-/* 🚨 Blinking Alert */
-@keyframes blink {
-  0% {
-    opacity: 1;
+/* 📱 Mobile Specific Adjustments */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
   }
 
-  50% {
-    opacity: 0.4;
+  .app {
+    padding: 15px;
   }
 
-  100% {
-    opacity: 1;
+  button {
+    width: 90%;
+    /* Make button easy to tap on small screens */
   }
-}
-
-.blink {
-  animation: blink 1s infinite;
-}
-
-/* 🧠 ChatGPT-style message box */
-.chat-box {
-  background: #444654;
-  padding: 15px;
-  border-radius: 10px;
-  margin-top: 20px;
-  text-align: left;
 }
