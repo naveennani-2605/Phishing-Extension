@@ -1,0 +1,118 @@
+body {
+  background: #343541;
+  color: white;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.app {
+  text-align: center;
+  padding: 40px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #10a37f;
+}
+
+input {
+  width: 60%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  margin: 10px;
+  outline: none;
+}
+
+button {
+  padding: 10px 20px;
+  background: #10a37f;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #0d8a6a;
+}
+
+.result {
+  margin-top: 25px;
+  padding: 20px;
+  background: #444654;
+  border-radius: 12px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 🔥 Risk Meter */
+.meter {
+  height: 12px;
+  width: 100%;
+  background: #2f2f2f;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+.meter-fill {
+  height: 100%;
+  width: 0%;
+  transition: width 0.6s ease-in-out;
+  border-radius: 10px;
+}
+
+/* Colors */
+.safe {
+  color: #00ff9d;
+}
+
+.warn {
+  color: #ffd700;
+}
+
+.danger {
+  color: #ff4d4d;
+}
+
+.safe-bar {
+  background: #00ff9d;
+}
+
+.warn-bar {
+  background: #ffd700;
+}
+
+.danger-bar {
+  background: #ff4d4d;
+}
+
+/* 🚨 Blinking Alert */
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+/* 🧠 ChatGPT-style message box */
+.chat-box {
+  background: #444654;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  text-align: left;
+}
