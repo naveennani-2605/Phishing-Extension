@@ -1,82 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
 body {
-  background: #343541;
-  color: white;
-  font-family: "Segoe UI", Arial, sans-serif;
+  background: radial-gradient(circle at center, #1b1e2b 0%, #0a0b10 100%);
+  color: #e2e8f0;
+  font-family: 'Inter', sans-serif;
   margin: 0;
-  /* Remove default margins */
   padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .app {
   text-align: center;
-  padding: 20px;
-  /* Reduced padding for mobile */
-  max-width: 800px;
-  /* Keeps it from getting too wide on desktop */
+  padding: 40px;
+  width: 90%;
+  max-width: 600px;
+  background: rgba(20, 22, 35, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
   margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle glowing orb in background of app */
+.app::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 200px;
+  background: rgba(0, 255, 204, 0.15);
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
 }
 
 h1 {
-  margin-bottom: 20px;
-  color: #10a37f;
-  font-size: 1.8rem;
-  /* Scalable font size */
+  margin-bottom: 30px;
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.shield-icon {
+  color: #00ffcc;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 204, 0.6));
+}
+
+.input-container {
+  display: flex;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+  flex-direction: column;
+}
+
+@media (min-width: 500px) {
+  .input-container {
+    flex-direction: row;
+  }
 }
 
 input {
-  width: 90%;
-  /* Almost full width on mobile */
-  max-width: 500px;
-  /* Caps width on desktop */
-  padding: 12px;
-  border-radius: 8px;
-  border: none;
-  margin: 10px 0;
+  flex: 1;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1.05rem;
   outline: none;
-  box-sizing: border-box;
-  /* Prevents padding from breaking width */
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+input:focus {
+  border-color: #00ffcc;
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.2), inset 0 2px 4px rgba(0,0,0,0.2);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 button {
-  padding: 12px 24px;
-  background: #10a37f;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #00ffcc 0%, #00b38c 100%);
   border: none;
-  border-radius: 6px;
-  color: white;
+  border-radius: 12px;
+  color: #0a0b10;
+  font-weight: 600;
+  font-size: 1.05rem;
   cursor: pointer;
-  transition: 0.3s;
-  width: auto;
-  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 255, 204, 0.5);
+  background: linear-gradient(135deg, #1affd1 0%, #00cc9e 100%);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(0, 255, 204, 0.4);
+}
+
+button:disabled {
+  background: #333;
+  color: #888;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .result {
-  margin-top: 25px;
-  padding: 20px;
-  background: #444654;
-  border-radius: 12px;
-  width: 95%;
-  /* Responsive width */
-  max-width: 600px;
-  /* Caps width on desktop */
-  margin-left: auto;
-  margin-right: auto;
-  box-sizing: border-box;
+  margin-top: 35px;
+  padding: 30px 25px;
+  background: rgba(30, 34, 45, 0.5);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 0.5s ease-out forwards;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-/* ... keep your Meter and Animation styles the same ... */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-/* 📱 Mobile Specific Adjustments */
+.result h2 {
+  font-size: 1.4rem;
+  margin: 0 0 10px 0;
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+.result h3 {
+  font-size: 2.2rem;
+  margin: 0 0 20px 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.meter {
+  height: 12px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  overflow: visible;
+  margin: 25px 0;
+  border: 1px solid rgba(255,255,255,0.05);
+  position: relative;
+}
+
+.meter-fill {
+  height: 100%;
+  width: 0%;
+  transition: width 1.2s cubic-bezier(0.1, 0.8, 0.3, 1), box-shadow 0.3s;
+  border-radius: 20px;
+  position: relative;
+}
+
+.meter-fill::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px inherit;
+}
+
+.chat-box {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 15px 20px;
+  border-radius: 12px;
+  font-size: 1rem;
+  border-left: 4px solid #fff;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chat-box p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* 🎨 Colors and Effects by Status */
+
+/* Safe */
+.safe { color: #00ffcc; text-shadow: 0 0 15px rgba(0, 255, 204, 0.4); }
+.safe-bar { background: linear-gradient(90deg, #00b38c, #00ffcc); box-shadow: 0 0 15px rgba(0, 255, 204, 0.6); }
+.safe-box { border-left-color: #00ffcc; }
+.safe-icon { color: #00ffcc; font-size: 1.5rem; }
+
+/* Warning */
+.warn { color: #ffbc00; text-shadow: 0 0 15px rgba(255, 188, 0, 0.4); }
+.warn-bar { background: linear-gradient(90deg, #ca9600, #ffbc00); box-shadow: 0 0 15px rgba(255, 188, 0, 0.6); }
+.warn-box { border-left-color: #ffbc00; }
+.warn-icon { color: #ffbc00; font-size: 1.5rem; }
+
+/* Danger */
+.danger { color: #ff2a2a; text-shadow: 0 0 15px rgba(255, 42, 42, 0.4); }
+.danger-bar { background: linear-gradient(90deg, #cc0000, #ff2a2a); box-shadow: 0 0 15px rgba(255, 42, 42, 0.8); }
+.danger-box { border-left-color: #ff2a2a; background: rgba(255, 42, 42, 0.05); }
+.danger-icon { color: #ff2a2a; font-size: 1.5rem; }
+
+/* Scanning State */
+.scanner-container {
+  margin-top: 30px;
+  position: relative;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00ffcc;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.scanner-text {
+  animation: pulseOpacity 1s infinite;
+}
+
+.scanner-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 255, 204, 0.2);
+  overflow: hidden;
+}
+
+.scanner-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #00ffcc, transparent);
+  animation: scanLight 1.5s infinite linear;
+}
+
+@keyframes scanLight {
+  0% { left: -50%; }
+  100% { left: 100%; }
+}
+
+@keyframes pulseOpacity {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Blinking Alert for Danger */
+@keyframes flashDanger {
+  0%, 100% { text-shadow: 0 0 15px rgba(255, 42, 42, 0.8); opacity: 1; }
+  50% { text-shadow: 0 0 30px rgba(255, 42, 42, 1); opacity: 0.8; }
+}
+
+.blink {
+  animation: flashDanger 1s infinite;
+}
+
+/* Mobile Specific Adjustments */
 @media (max-width: 480px) {
-  h1 {
-    font-size: 1.5rem;
-  }
-
   .app {
-    padding: 15px;
+    padding: 25px 15px;
+    border-radius: 16px;
+    width: 95%;
+    box-sizing: border-box;
   }
-
-  button {
-    width: 90%;
-    /* Make button easy to tap on small screens */
-  }
+  h1 { font-size: 1.6rem; }
+  .result { padding: 20px 15px; }
+  .result h3 { font-size: 1.8rem; }
+  button { padding: 14px 20px; }
 }
